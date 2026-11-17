@@ -100,17 +100,17 @@ export const Hero: React.FC = () => {
             </motion.h1>
 
             {/* Dynamic Rotating Roles */}
-            <div className="flex items-center gap-2 font-heading text-xl sm:text-2xl lg:text-3xl font-medium text-[#765968] h-10 overflow-hidden">
-              <span>Aspiring</span>
-              <div className="relative inline-block min-w-[200px]">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-heading text-xl sm:text-2xl lg:text-3xl font-medium text-[#765968] py-1">
+              <span className="shrink-0 select-none">Aspiring</span>
+              <div className="relative inline-flex items-center min-h-[46px] sm:min-h-[54px] min-w-[170px] sm:min-w-[270px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={rotatingRoles[roleIndex]}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
+                    exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.35, ease: "easeInOut" }}
-                    className="absolute left-0 font-bold text-[#D66B91] underline decoration-[#E88BAA]/50 decoration-wavy"
+                    className="inline-block font-bold text-[#D66B91] whitespace-nowrap leading-normal underline decoration-[#E88BAA]/60 underline-offset-4 decoration-2 py-1"
                   >
                     {rotatingRoles[roleIndex]}
                   </motion.span>

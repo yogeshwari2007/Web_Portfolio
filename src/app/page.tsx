@@ -10,10 +10,14 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
 import { LoadingScreen } from "@/components/LoadingScreen";
+import { ScrollReset } from "@/components/ScrollReset";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-background text-foreground flex flex-col selection:bg-accent selection:text-white">
+      {/* Scroll restoration guard ensuring initial load always starts at top */}
+      <ScrollReset />
+
       {/* Custom Minimal Loading Screen */}
       <LoadingScreen />
 

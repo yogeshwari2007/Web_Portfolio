@@ -30,15 +30,19 @@ export const InteractiveTerminal: React.FC = () => {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
 
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const outputContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const scrollToBottom = () => {
-    terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    scrollToBottom();
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    // Only scroll the internal terminal container, never the window
+    if (outputContainerRef.current) {
+      outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleCommand = (cmdStr: string) => {
@@ -385,7 +389,7 @@ export const InteractiveTerminal: React.FC = () => {
           </div>
 
           {/* Output Display Area */}
-          <div className="p-4 sm:p-5 max-h-80 overflow-y-auto space-y-3">
+          <div ref={outputContainerRef} className="p-4 sm:p-5 max-h-80 overflow-y-auto space-y-3">
             {history.map((item) => (
               <div key={item.id} className="leading-relaxed">
                 {item.type === "command" ? (
@@ -398,7 +402,6 @@ export const InteractiveTerminal: React.FC = () => {
                 )}
               </div>
             ))}
-            <div ref={terminalEndRef} />
           </div>
 
           {/* Terminal Input Line */}
