@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FFF7FA;
+  --secondary: #FCEBF1;
+  --card: #FFFFFF;
+  --heading: #422634;
+  --foreground: #765968;
+  --muted: #8C6E7E;
+  --accent: #E88BAA;
+  --accent-secondary: #D66B91;
+  --border: #F2D5E0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: #FFF7FA;
+  color: #765968;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #E88BAA;
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar in soft rose */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF7FA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F2D5E0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E88BAA;
+}
+
+/* Delicate pink dot grid background */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(214, 107, 145, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(232, 139, 170, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Elegant light cards */
+.pink-card {
+  background-color: #FFFFFF;
+  border: 1px solid #F2D5E0;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px -2px rgba(232, 139, 170, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pink-card:hover {
+  border-color: #E88BAA;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -4px rgba(214, 107, 145, 0.15);
+}
+
+/* Soft delicate rose glow */
+.glow-pink {
+  box-shadow: 0 0 35px -5px rgba(232, 139, 170, 0.3);
+}
